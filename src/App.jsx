@@ -1,4 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import cristinaPortrait from '../Cristina.png'
+import antoniaPortrait from '../Antonia.png'
+import sofiaPortrait from '../Sofía.png'
+import davidPortrait from '../David.png'
+import carmenPortrait from '../Carmen.png'
+import danielPortrait from '../Daniel.png'
+import pepsiMark from '../Teampepsi.png'
+import appleMark from '../Appleteam.png'
+import kellogsMark from '../Kellogs.png'
 import {
   ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Award, BarChart3, CalendarDays,
   Check, ChevronDown, ChevronRight, CircleHelp, Clock3, ExternalLink, Flag, Gamepad2,
@@ -17,6 +26,8 @@ const makeId = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.
 const byId = (state, id) => state.players.find((player) => player.id === id)
 const teamById = (state, id) => state.teams.find((team) => team.id === id)
 const sortedRanking = (state) => [...state.ranking].sort((a, b) => b.points - a.points).map((entry, index) => ({ ...entry, position: index + 1, player: byId(state, entry.playerId) }))
+const playerPortraits = { cristina: cristinaPortrait, antonia: antoniaPortrait, sofia: sofiaPortrait, david: davidPortrait, carmen: carmenPortrait, daniel: danielPortrait }
+const teamMarks = { pepsi: pepsiMark, apple: appleMark, kellogs: kellogsMark }
 
 function Badge({ children, tone = 'neutral' }) { return <span className={`badge badge-${tone}`}>{children}</span> }
 function Delta({ value }) {
@@ -56,6 +67,26 @@ function RankingTable({ state, onOpen, race = false, compact = false }) {
   })}</tbody></table>{!rows.length && <EmptyState title="Aún no hay resultados" icon={Trophy}>La clasificación aparecerá cuando se publiquen las primeras jornadas.</EmptyState>}</div>
 }
 
+function RankingCards({ state, onOpen, race = false }) {
+  const rows = race ? getSeasonRace(state) : sortedRanking(state)
+  if (!rows.length) return <section className="panel"><EmptyState title="Aún no hay resultados" icon={Trophy}>La clasificación aparecerá cuando se publiquen las primeras jornadas.</EmptyState></section>
+  return <div className="ranking-cards">{rows.map((row, index) => {
+    const player = row.player || byId(state, row.playerId) || (race ? row : null)
+    if (!player) return null
+    const team = teamById(state, row.teamId || player.teamId)
+    return <article className={`ranking-banner ranking-banner-team-${team?.id || 'default'} ranking-banner-player-${player.id}`} key={row.playerId || row.id}>
+      <span className="ranking-banner-place">{String(index + 1).padStart(2, '0')}</span>
+      {teamMarks[team?.id] && (team.id === 'kellogs' ? <span className="ranking-banner-team ranking-banner-kellogs-mark" role="img" aria-label={team.name} /> : <img className="ranking-banner-team" src={teamMarks[team.id]} alt={team.name} loading="lazy" />)}
+      {playerPortraits[player.id] && <img className="ranking-banner-portrait" src={playerPortraits[player.id]} alt="" loading="lazy" />}
+      <button className="ranking-banner-info" onClick={() => onOpen(player.id)} aria-label={`Ver perfil de ${player.name}`}>
+        <span className="ranking-banner-team-name">{team?.name || 'Jugador'}</span>
+        <strong>{player.name}</strong>
+        <span className="ranking-banner-points">{formatPoints(row.points)} <small>{race ? 'PTS RACE' : 'PTS RANKING'}</small></span>
+      </button>
+    </article>
+  })}</div>
+}
+
 function HomePage({ state, onOpen, onNavigate }) {
   const ranking = sortedRanking(state)
   const race = getSeasonRace(state)
@@ -70,11 +101,11 @@ function HomePage({ state, onOpen, onNavigate }) {
 }
 
 function RankingPage({ state, onOpen }) {
-  return <><PageIntro eyebrow={`TEMPORADA ${state.season} · CIRCUITO`} title="Ranking" copy="Puntos defendidos y ganados. Cada jornada mueve la tabla." />{state.rankingNote && <div className="notice notice-amber"><CircleHelp size={17} /><span>{state.rankingNote}</span></div>}<div className="ranking-key"><span><i className="key-dot key-earned" />Puntos ganados por posición</span><span><i className="key-dot key-defended" />Puntos defendidos de la temporada anterior</span><span className="key-pts">1º 1.000 <b>·</b> 2º 650 <b>·</b> 3º 400 <b>·</b> 4º 200 <b>·</b> 5º 100 <b>·</b> 6º 50</span></div><section className="panel"><RankingTable state={state} onOpen={onOpen} /></section></>
+  return <><PageIntro eyebrow={`TEMPORADA ${state.season} · CIRCUITO`} title="Ranking" copy="Puntos defendidos y ganados. Cada jornada mueve la tabla." />{state.rankingNote && <div className="notice notice-amber"><CircleHelp size={17} /><span>{state.rankingNote}</span></div>}<div className="ranking-key"><span><i className="key-dot key-earned" />Puntos ganados por posición</span><span><i className="key-dot key-defended" />Puntos defendidos de la temporada anterior</span><span className="key-pts">1º 1.000 <b>·</b> 2º 650 <b>·</b> 3º 400 <b>·</b> 4º 200 <b>·</b> 5º 100 <b>·</b> 6º 50</span></div><RankingCards state={state} onOpen={onOpen} /></>
 }
 function RacePage({ state, onOpen }) {
   const race = getSeasonRace(state)
-  return <><PageIntro eyebrow={`TEMPORADA ${state.season} · PUNTOS NETOS`} title="La race" copy="La suma de puntos de esta temporada. Aquí no se defiende nada." /><div className="race-summary"><div className="race-big"><span className="eyebrow">LÍDER ACTUAL</span><PlayerName player={race[0]} onOpen={onOpen} /><strong>{formatPoints(race[0]?.points)}<small> pts</small></strong></div><div className="race-explainer"><Flag size={20} /><p>Los puntos de cada jornada publicada se acumulan tal cual. En los Grand Slams también cuentan los puntos del cuadro.</p></div></div><section className="panel"><div className="section-heading"><div><span className="eyebrow">CLASIFICACIÓN DE TEMPORADA</span><h2>Race T{state.season}</h2></div><Badge tone="green">Sin defensa</Badge></div><RankingTable state={state} onOpen={onOpen} race /></section></>
+  return <><PageIntro eyebrow={`TEMPORADA ${state.season} · PUNTOS NETOS`} title="La race" copy="La suma de puntos de esta temporada. Aquí no se defiende nada." /><div className="race-summary"><div className="race-big"><span className="eyebrow">LÍDER ACTUAL</span><PlayerName player={race[0]} onOpen={onOpen} /><strong>{formatPoints(race[0]?.points)}<small> pts</small></strong></div><div className="race-explainer"><Flag size={20} /><p>Los puntos de cada jornada publicada se acumulan tal cual. En los Grand Slams también cuentan los puntos del cuadro.</p></div></div><div className="section-heading race-list-heading"><div><span className="eyebrow">CLASIFICACIÓN DE TEMPORADA</span><h2>Race T{state.season}</h2></div><Badge tone="green">Sin defensa</Badge></div><RankingCards state={state} onOpen={onOpen} race /></>
 }
 
 function LeagueDirectory({ state, onSelect }) {

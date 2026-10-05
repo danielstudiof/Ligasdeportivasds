@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  font-family: 'Space Grotesk', sans-serif;
-  color: #20231f;
-  background: #f4f3ed;
+  font-family: 'Poppins', sans-serif;
+  color: #25192e;
+  background: #f8f3fa;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --paper: #f4f3ed;
-  --white: #fffefa;
-  --ink: #20231f;
-  --muted: #818277;
-  --line: #e7e5dc;
-  --forest: #203d35;
-  --forest-2: #294c41;
-  --coral: #ef684f;
-  --lime: #d8e865;
-  --blue: #85b5ca;
+  --paper: #f8f3fa;
+  --white: #fffaff;
+  --ink: #25192e;
+  --muted: #81758b;
+  --line: #eaddec;
+  --forest: #39134f;
+  --forest-2: #53206f;
+  --coral: #d9235d;
+  --lime: #49dbe7;
+  --blue: #49dbe7;
   --mono: 'DM Mono', monospace;
 }
 
@@ -501,4 +501,179 @@ input::placeholder { color: #a5a69b; }
   .history-create .inline-form > label { min-width: 0; }
   .panel { padding: 15px; }
   .team-preview { padding: 15px; }
+}
+
+.brand-text { font-size: 0; letter-spacing: 0; }
+.brand-text::after { display: block; color: white; content: 'LIGAS\A DEPORTIVAS DS'; font-size: 10px; line-height: 1.35; letter-spacing: .05em; white-space: pre; }
+.breadcrumbs strong, .slam-seed-list select { font-family: 'Poppins', sans-serif; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline-color: var(--blue); }
+.topbar { background: #f8f3faeb; border-color: var(--line); }
+.cloud-state i.cloud-on, .admin-user-dot { background: var(--blue); }
+.welcome-art { background: url('../Fondo.png') center / cover; color: white; }
+.welcome-art::before { background-image: radial-gradient(#ffffff32 .8px, transparent .8px); }
+.art-ring { border-color: #ffffff45; }
+.button-outline:hover, .icon-button:hover { background: #f0e4f5; }
+.notice-amber, .setup-note { color: #59345f; background: #f1d8f1; }
+.notice-amber .text-button { color: #59345f; }
+.notice-green, .badge-green { color: #245568; background: #d9f3f5; }
+.badge-amber { color: #59345f; background: #f1d8f1; }
+.place-1 { color: #541b53; background: #f5b8e8; }
+.place-2 { color: #31536a; background: #cbe9f1; }
+.place-3 { color: #673760; background: #ead0e9; }
+.avatar, .profile-avatar { background-color: #eadcf1; }
+.delta-up { color: #5b40a5; }
+.latest-card { background: #e6f3f8; }
+.team-card { background: #f6eff9; }
+.empty-icon, .league-card-mark { background-color: #f0e4f5; }
+.league-card:hover { border-color: #ba73cb; }
+.race-big { background: #f0e4f5; }
+.record-coral { color: #61213c; background: #f2a9ca; }
+.record-yellow { color: #482064; background: #d7a9ed; }
+.record-green { color: #193e60; background: #9ce4ed; }
+.match-winner { color: #6c2d8e; }
+.winner-button:hover, .winner-button.selected { background: #8a31b0; }
+.member-lines span, .admin-session-row.selected, .history-years button.active { background: #f0e4f5; }
+.league-editor, .player-editor, .team-editor, .slam-admin-row { background: #fbf7fc; }
+.profile-avatar { background-color: #eadcf1; }
+.history-rank-inputs { background: #f8f1fa; }
+.site-footer button { color: var(--forest-2); }
+.ranking-cards { display: grid; gap: 13px; }
+.ranking-banner { position: relative; display: grid; grid-template-columns: 58px 82px minmax(0, 1fr); align-items: center; min-height: 145px; overflow: hidden; isolation: isolate; color: white; background: #6923ae; border-radius: 9px; }
+.ranking-banner::before { position: absolute; inset: 0; z-index: -2; content: ''; background: url('../Fondo.png') center 47% / cover; }
+.ranking-banner::after { position: absolute; inset: 0; z-index: -1; content: ''; background: linear-gradient(105deg, #c20d3bcf 0%, #ac1fc2b0 53%, #5c20b0b5 100%); }
+.ranking-banner-1::after { background: linear-gradient(105deg, #9b1ab2ce 0%, #c32196b8 48%, #6124bcbb 100%); }
+.ranking-banner-2::after { background: linear-gradient(105deg, #d51b62d4 0%, #9b24c2b5 54%, #4b26a8bf 100%); }
+.ranking-banner-place { position: relative; z-index: 2; justify-self: center; align-self: start; margin-top: 13px; color: white; font: 600 13px var(--mono); text-shadow: 0 1px 8px #310b58a6; }
+.ranking-banner-team { position: relative; z-index: 2; width: 48px; height: 48px; object-fit: contain; filter: drop-shadow(0 2px 7px #24102d70); }
+.ranking-banner-portrait { position: absolute; bottom: 0; left: 23%; z-index: 1; width: 34%; height: 118%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 2px 10px #29113a45); }
+.ranking-banner-info { position: relative; z-index: 2; display: grid; justify-items: end; gap: 3px; min-width: 0; margin: 0 22px 0 0; padding: 12px 0; color: white; text-align: right; background: none; border: 0; cursor: pointer; }
+.ranking-banner-team-name { max-width: 100%; overflow: hidden; color: #e9faff; font: 500 9px var(--mono); text-overflow: ellipsis; text-transform: uppercase; }
+.ranking-banner-info strong { max-width: 100%; overflow-wrap: anywhere; font-size: 27px; font-weight: 800; line-height: 1.05; }
+.ranking-banner-info:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.ranking-banner-points { font-size: 13px; font-weight: 600; }
+.ranking-banner-points small { margin-left: 3px; color: #dffaff; font: 9px var(--mono); }
+.race-list-heading { margin: 25px 0 14px; }
+
+@media (max-width: 760px) {
+  .ranking-banner { grid-template-columns: 42px 58px minmax(0, 1fr); min-height: 132px; }
+  .ranking-banner-team { width: 38px; height: 38px; }
+  .ranking-banner-portrait { left: 20%; width: 35%; height: 112%; }
+  .ranking-banner-info { margin-right: 12px; }
+  .ranking-banner-info strong { font-size: 22px; }
+  .ranking-banner-points { font-size: 11px; }
+}
+
+@media (max-width: 410px) {
+  .ranking-banner { grid-template-columns: 33px 46px minmax(0, 1fr); min-height: 120px; }
+  .ranking-banner-team { width: 32px; height: 32px; }
+  .ranking-banner-portrait { left: 19%; width: 37%; height: 108%; }
+  .ranking-banner-info { margin-right: 8px; }
+  .ranking-banner-info strong { font-size: 18px; }
+  .ranking-banner-points { font-size: 10px; }
+  .ranking-banner-points small { font-size: 8px; }
+}
+
+.ranking-banner-team { transform: scale(2); }
+.ranking-banner-portrait { left: 20%; width: 38%; height: 132%; object-fit: cover; object-position: center 12%; }
+
+@media (max-width: 760px) {
+  .ranking-banner-team { transform: scale(1.9); }
+  .ranking-banner-portrait { left: 16%; width: 51%; height: 145%; }
+}
+
+@media (max-width: 410px) {
+  .ranking-banner-portrait { left: 15%; width: 53%; height: 145%; }
+}
+
+.brand-lockup { width: 100%; min-height: 170px; justify-content: center; background: none; }
+.brand-lockup .brand-mark { display: none; }
+.brand-lockup .brand-text { width: 100%; height: 160px; color: transparent; background: url('../Logo.png') center / contain no-repeat; }
+.brand-lockup .brand-text::after { content: none; }
+.ranking-banner { grid-template-columns: 38px 68px minmax(0, 1fr); }
+.ranking-banner::before, .ranking-banner::after { background-image: none; }
+.ranking-banner::after { background: #7221a8; }
+.ranking-banner-team-kellogs::before { background: #bd0b36; }
+.ranking-banner-team-kellogs::after { background: linear-gradient(120deg, #d11142 0%, #b50635 100%); }
+.ranking-banner-team-pepsi::before { background: #b52575; }
+.ranking-banner-team-pepsi::after { background: linear-gradient(180deg, #762494 0%, #f20c17 53%, #ff9299 100%); }
+.ranking-banner-team-apple::before { background: url('../Fondo.png') center / cover; }
+.ranking-banner-team-apple::after { background: linear-gradient(115deg, #db32ee70 0%, #8511b8a8 100%); }
+.ranking-banner-place { display: grid; width: 26px; height: 26px; place-items: center; margin-top: 0; color: #351044; background: #fff; border-radius: 50%; font: 700 11px var(--mono); text-shadow: none; box-shadow: 0 2px 7px #290b3b55; }
+.ranking-banner-team { width: 54px; height: 54px; transform: none; }
+.ranking-banner-team-kellogs .ranking-banner-team { filter: hue-rotate(125deg) saturate(1.4) drop-shadow(0 2px 7px #24102d70); }
+.ranking-banner-team-apple .ranking-banner-team { filter: brightness(0) invert(1) drop-shadow(0 2px 7px #24102d70); }
+.ranking-banner-portrait { left: 13%; width: 62%; height: 100%; object-fit: contain; object-position: center bottom; transform: scaleX(1.12); transform-origin: center bottom; }
+.ranking-banner-player-antonia .ranking-banner-portrait { left: 10%; width: 68%; transform: scaleX(1.08); }
+.ranking-banner-player-sofia .ranking-banner-portrait { left: 12%; width: 64%; transform: scaleX(1.14); }
+.ranking-banner-player-carmen .ranking-banner-portrait { left: 11%; width: 65%; transform: scaleX(1.13); }
+.ranking-banner-player-david .ranking-banner-portrait { left: 11%; width: 66%; transform: scaleX(1.14); }
+
+@media (max-width: 760px) {
+  .brand-lockup { min-height: 148px; }
+  .brand-lockup .brand-text { height: 140px; }
+  .ranking-banner { grid-template-columns: 31px 55px minmax(0, 1fr); }
+  .ranking-banner-place { width: 23px; height: 23px; font-size: 10px; }
+  .ranking-banner-team { width: 46px; height: 46px; }
+  .ranking-banner-portrait { left: 11%; width: 65%; height: 100%; transform: scaleX(1.08); }
+  .ranking-banner-player-antonia .ranking-banner-portrait { left: 9%; width: 70%; }
+  .ranking-banner-player-sofia .ranking-banner-portrait { left: 10%; width: 68%; }
+  .ranking-banner-player-carmen .ranking-banner-portrait { left: 9%; width: 69%; }
+  .ranking-banner-player-david .ranking-banner-portrait { left: 9%; width: 70%; }
+}
+
+@media (max-width: 410px) {
+  .ranking-banner { grid-template-columns: 27px 48px minmax(0, 1fr); }
+  .ranking-banner-team { width: 41px; height: 41px; }
+  .ranking-banner-info strong { font-size: 17px; }
+}
+
+.ranking-banner { grid-template-columns: 38px 130px minmax(0, 1fr); }
+.ranking-banner-place { position: relative; z-index: 4; }
+.ranking-banner-team { width: 120px; height: 120px; transform: none; }
+.ranking-banner-team-kellogs .ranking-banner-team { filter: drop-shadow(0 2px 7px #24102d70); }
+.ranking-banner-kellogs-mark { background-color: #45ddeb; -webkit-mask: url('../Kellogs.png') center / contain no-repeat; mask: url('../Kellogs.png') center / contain no-repeat; }
+.ranking-banner-team-apple .ranking-banner-team { transform: scale(1.18); }
+.ranking-banner-portrait { left: 12%; width: 72%; height: 100%; object-fit: cover; object-position: center top; transform: none; }
+.ranking-banner-player-antonia .ranking-banner-portrait { left: 10%; width: 77%; object-position: center top; }
+.ranking-banner-player-sofia .ranking-banner-portrait { left: 12%; width: 75%; object-position: center top; }
+.ranking-banner-player-carmen .ranking-banner-portrait { left: 11%; width: 76%; object-position: center top; }
+.ranking-banner-player-david .ranking-banner-portrait { left: 11%; width: 77%; object-position: center top; }
+
+@media (max-width: 760px) {
+  .ranking-banner { grid-template-columns: 31px 92px minmax(0, 1fr); }
+  .ranking-banner-team { width: 88px; height: 88px; }
+  .ranking-banner-team-apple .ranking-banner-team { transform: scale(1.12); }
+  .ranking-banner-portrait { left: 10%; width: 78%; height: 100%; }
+  .ranking-banner-player-antonia .ranking-banner-portrait { left: 8%; width: 82%; }
+  .ranking-banner-player-sofia .ranking-banner-portrait { left: 9%; width: 80%; }
+  .ranking-banner-player-carmen .ranking-banner-portrait { left: 8%; width: 81%; }
+  .ranking-banner-player-david .ranking-banner-portrait { left: 8%; width: 82%; }
+}
+
+.ranking-banner-portrait { width: 40%; }
+.ranking-banner-player-antonia .ranking-banner-portrait { width: 43%; }
+.ranking-banner-player-sofia .ranking-banner-portrait { width: 42%; }
+.ranking-banner-player-carmen .ranking-banner-portrait { width: 42%; }
+.ranking-banner-player-david .ranking-banner-portrait { width: 43%; }
+
+@media (max-width: 760px) {
+  .ranking-banner-portrait { width: 78%; }
+  .ranking-banner-player-antonia .ranking-banner-portrait { width: 82%; }
+  .ranking-banner-player-sofia .ranking-banner-portrait { width: 80%; }
+  .ranking-banner-player-carmen .ranking-banner-portrait { width: 81%; }
+  .ranking-banner-player-david .ranking-banner-portrait { width: 82%; }
+}
+
+.ranking-banner-portrait { object-fit: contain; object-position: center top; transform: scale(1.16); transform-origin: center top; }
+.ranking-banner-player-antonia .ranking-banner-portrait { transform: scale(1.2); }
+.ranking-banner-player-sofia .ranking-banner-portrait { transform: scale(1.14); }
+.ranking-banner-player-carmen .ranking-banner-portrait { transform: scale(1.16); }
+.ranking-banner-player-david .ranking-banner-portrait { transform: scale(1.16); }
+
+@media (max-width: 760px) {
+  .ranking-banner-portrait { transform: scale(1.08); }
+  .ranking-banner-player-antonia .ranking-banner-portrait { transform: scale(1.11); }
+  .ranking-banner-player-sofia .ranking-banner-portrait { transform: scale(1.08); }
+  .ranking-banner-player-carmen .ranking-banner-portrait { transform: scale(1.1); }
+  .ranking-banner-player-david .ranking-banner-portrait { transform: scale(1.1); }
 }
