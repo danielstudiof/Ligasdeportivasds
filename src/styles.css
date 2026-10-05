@@ -165,6 +165,7 @@ button:disabled { opacity: .6; cursor: wait; }
 .team-card h3 { margin: 15px 0 2px; font-size: 17px; letter-spacing: -.035em; }
 .team-race { color: #585b50; font-size: 12px; font-weight: 600; }
 .team-race small { color: #85867a; font-size: 9px; font-weight: 400; }
+.team-title-count { display: block; margin-top: 4px; color: var(--forest-2); font-size: 10px; font-weight: 600; }
 .team-members { display: grid; gap: 9px; margin-top: 15px; padding-top: 12px; border-top: 1px solid #deded4; }
 .team-members .avatar { width: 25px; height: 25px; }
 .team-members .player-link { font-size: 11px; }
@@ -432,6 +433,7 @@ input::placeholder { color: #a5a69b; }
   .team-card-top { grid-column: 1 / -1; }
   .team-card h3 { margin: 10px 0 0; }
   .team-race { align-self: end; justify-self: end; margin-bottom: 2px; }
+    .team-title-count { grid-column: 1 / -1; margin-top: -1px; }
   .team-members { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
   .league-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .league-card { min-height: 210px; padding: 13px; }
@@ -676,4 +678,38 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .ranking-banner-player-sofia .ranking-banner-portrait { transform: scale(1.08); }
   .ranking-banner-player-carmen .ranking-banner-portrait { transform: scale(1.1); }
   .ranking-banner-player-david .ranking-banner-portrait { transform: scale(1.1); }
+}
+
+.page-content:empty { display: none; }
+.ranking-history-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 18px; background: var(--white); border: 1px solid var(--line); }
+.ranking-history-summary > div { display: grid; gap: 5px; min-width: 0; padding: 15px 17px; border-right: 1px solid var(--line); }
+.ranking-history-summary > div:last-child { border-right: 0; }
+.ranking-history-summary span { color: #81758b; font: 9px var(--mono); letter-spacing: .06em; }
+.ranking-history-summary strong { overflow-wrap: anywhere; color: var(--ink); font-size: 15px; }
+.ranking-charts { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); margin-bottom: 18px; }
+.ranking-chart-panel { min-width: 0; padding: 19px; }
+.ranking-chart-panel .section-heading { min-height: 36px; }
+.ranking-chart-panel .section-heading > svg { flex: none; color: var(--coral); }
+.ranking-chart-frame { width: 100%; height: 340px; }
+.ranking-bar-frame { height: 340px; }
+.ranking-snapshot-panel { margin-top: 18px; }
+.team-logo-mark { background-position: center; background-repeat: no-repeat; background-size: contain; }
+.team-logo-inline { display: inline-grid; width: 22px; height: 22px; flex: none; vertical-align: middle; }
+.team-logo-score { display: inline-grid; width: 23px; height: 23px; flex: none; }
+.team-score-row { grid-template-columns: 28px 23px minmax(0, 1fr) auto; }
+.team-label { gap: 6px; }
+
+@media (max-width: 760px) {
+  .ranking-history-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ranking-history-summary > div:nth-child(2) { border-right: 0; }
+  .ranking-history-summary > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .ranking-charts { grid-template-columns: 1fr; }
+  .ranking-chart-frame, .ranking-bar-frame { height: 300px; }
+}
+
+@media (max-width: 410px) {
+  .ranking-history-summary > div { padding: 12px; }
+  .ranking-history-summary strong { font-size: 13px; }
+  .ranking-chart-panel { padding: 14px; }
+  .ranking-chart-frame, .ranking-bar-frame { height: 275px; }
 }
