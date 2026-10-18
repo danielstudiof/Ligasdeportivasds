@@ -18,6 +18,8 @@ values ('UUID-DE-TU-CUENTA');
 
 La cuenta de cada jugador se vincula desde **Admin > Jugadores** escribiendo su correo en “Correo de cuenta”. El jugador se registra con ese mismo correo y, desde su área personal, puede consultar las jornadas abiertas, enviar una justificación de ausencia y ver sus resultados cuando se publiquen. Si ya tenías Supabase configurado, vuelve a ejecutar `supabase/schema.sql` para crear la tabla privada de justificaciones.
 
+La sesión se conserva en el almacenamiento local del navegador con renovación automática del token. Al cerrar y volver a abrir la página, el jugador recupera directamente su área personal hasta que pulse “Cerrar sesión” o elimine los datos del navegador.
+
 Las claves `service_role` nunca deben ponerse en el navegador ni en `.env.local`. La clave publishable/anon es la que debe usarse en `VITE_SUPABASE_ANON_KEY`; RLS restringe las escrituras a los UUID incluidos en `app_admins`.
 
 Sin credenciales configuradas, la web funciona en modo demostracion y los cambios no se guardan en la nube.
