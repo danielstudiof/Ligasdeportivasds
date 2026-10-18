@@ -278,6 +278,25 @@ button:disabled { opacity: .6; cursor: wait; }
 .profile-grid { grid-template-columns: 1.15fr .85fr; margin-bottom: 18px; }
 .practice-list { display: grid; }
 .practice-list a { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0; color: var(--forest); border-bottom: 1px solid var(--line); font-size: 12px; text-decoration: none; }
+.practice-list a span { display: grid; gap: 3px; min-width: 0; }
+.practice-list a strong { font-size: 12px; }
+.practice-list a small { overflow: hidden; color: #8b8c80; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.progress-summary { display: grid; gap: 9px; margin-bottom: 14px; }
+.progress-summary p { margin: 0; color: #77796f; font-size: 11px; line-height: 1.5; }
+.progress-track { height: 8px; overflow: hidden; background: #edf0e7; border-radius: 10px; }
+.progress-track span { display: block; height: 100%; background: var(--coral); border-radius: inherit; transition: width .25s ease; }
+.player-history-chart { display: grid; gap: 13px; }
+.player-history-row { display: grid; grid-template-columns: 35px 1fr 74px; align-items: center; gap: 10px; }
+.player-history-row strong { font: 10px var(--mono); color: #77796f; }
+.player-history-row b { font-size: 11px; text-align: right; }
+.practice-editor { display: grid; gap: 9px; padding: 12px; background: #f3f4ed; border: 1px solid var(--line); }
+.practice-editor-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.practice-editor-heading span { display: grid; gap: 3px; }
+.practice-editor-heading strong { font-size: 11px; }
+.practice-editor-heading small { color: #85877b; font-size: 10px; }
+.practice-editor-row { display: grid; grid-template-columns: .8fr 1.2fr 28px; gap: 6px; align-items: center; }
+.danger-button { color: #a23c32; }
+.account-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 18px; padding: 12px 15px; background: var(--white); border: 1px solid var(--line); color: #77796f; font-size: 11px; }
 .player-chip-row { display: flex; flex-wrap: wrap; gap: 13px 20px; }
 .login-card { width: min(450px, 100%); margin: 20px auto; padding: 28px; background: var(--white); border: 1px solid var(--line); }
 .login-mark { display: grid; width: 40px; height: 40px; margin-bottom: 18px; place-items: center; color: var(--forest); background: var(--lime); }
@@ -497,7 +516,9 @@ input::placeholder { color: #a5a69b; }
   .profile-avatar { width: 49px; height: 49px; font-size: 14px; }
   .profile-rank { grid-column: 1 / -1; grid-template-columns: auto auto auto; justify-content: start; align-items: baseline; gap: 7px; padding-top: 10px; border-top: 1px solid #ffffff30; }
   .profile-rank strong { font-size: 22px; }
-  .form-row, .admin-editor .form-row, .league-editor .form-row, .player-editor .form-row { grid-template-columns: 1fr; }
+  .form-row, .admin-editor .form-row, .league-editor .form-row, .player-editor .form-row, .practice-editor-row { grid-template-columns: 1fr; }
+  .practice-editor-row .danger-button { justify-self: end; }
+  .account-footer { align-items: flex-start; flex-direction: column; }
   .form-row.three-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .history-create .inline-form { display: grid; grid-template-columns: 1fr auto; }
   .history-create .inline-form > label { min-width: 0; }
