@@ -297,6 +297,18 @@ button:disabled { opacity: .6; cursor: wait; }
 .practice-editor-row { display: grid; grid-template-columns: .8fr 1.2fr 28px; gap: 6px; align-items: center; }
 .danger-button { color: #a23c32; }
 .account-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 18px; padding: 12px 15px; background: var(--white); border: 1px solid var(--line); color: #77796f; font-size: 11px; }
+.player-area-panel { margin-bottom: 18px; border-left: 4px solid var(--coral); }
+.section-subcopy { max-width: 560px; margin: 5px 0 0; color: #77796f; font-size: 11px; line-height: 1.5; }
+.player-session-list { display: grid; gap: 9px; }
+.player-session-card { padding: 13px 14px; background: #f8f7f2; border: 1px solid var(--line); }
+.player-session-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.player-session-heading > div { display: grid; gap: 4px; }
+.player-session-heading strong { font-size: 13px; }
+.justification-form { display: grid; gap: 8px; margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--line); }
+.justification-form label { display: grid; gap: 6px; color: #73756b; font-size: 10px; }
+.justification-form textarea { width: 100%; min-height: 58px; resize: vertical; }
+.justification-note { display: grid; gap: 4px; margin: 12px 0 0; padding-top: 11px; color: #61645b; border-top: 1px solid var(--line); font-size: 11px; line-height: 1.5; }
+.justification-note small { color: #8b8c80; font-size: 10px; }
 .player-chip-row { display: flex; flex-wrap: wrap; gap: 13px 20px; }
 .login-card { width: min(450px, 100%); margin: 20px auto; padding: 28px; background: var(--white); border: 1px solid var(--line); }
 .login-mark { display: grid; width: 40px; height: 40px; margin-bottom: 18px; place-items: center; color: var(--forest); background: var(--lime); }
