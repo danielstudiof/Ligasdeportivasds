@@ -140,7 +140,8 @@ export function getSeasonRace(state) {
 export function rankingPreview(state, league, session) {
   const after = getLeagueTable(state, league.id, session)
   const priorSeason = state.history.find((season) => Number(season.number) === Number(state.season) - 1)
-  const historicalLeague = priorSeason?.leagues?.find((item) => item.name.trim().toLowerCase() === league.name.trim().toLowerCase())
+  const defenseName = league.defendsLeagueName === '' ? '' : (league.defendsLeagueName || league.name)
+  const historicalLeague = defenseName ? priorSeason?.leagues?.find((item) => item.name.trim().toLowerCase() === defenseName.trim().toLowerCase()) : null
   const defendedByPlayer = Object.fromEntries((historicalLeague?.positions || []).map((item) => [item.playerId, item.points ?? RANKING_POINTS[(item.position || 6) - 1] ?? 0]))
   const previousChampionIds = historicalLeague?.winnerIds?.length
     ? historicalLeague.winnerIds
