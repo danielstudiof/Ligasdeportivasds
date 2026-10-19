@@ -111,7 +111,7 @@ export function getLeagueTable(state, leagueId, extraSession) {
   for (const session of state.sessions) {
     if (session.leagueId !== leagueId || (!session.published && session.id !== extraSession?.id)) continue
     for (const [playerId, value] of Object.entries(session.scores || {})) {
-      scores[playerId] = (scores[playerId] || 0) + (session.id === extraSession?.id ? scoreForResult(league, value) : Number(value) || 0)
+      scores[playerId] = (scores[playerId] || 0) + scoreForResult(league, value)
     }
   }
   return state.players
