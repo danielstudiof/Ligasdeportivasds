@@ -124,9 +124,9 @@ export function getSeasonRace(state) {
   for (const session of state.sessions) {
     if (!session.published) continue
     const league = state.leagues.find((item) => item.id === session.leagueId)
-    for (const [playerId, value] of Object.entries(session.scores || {})) {
-      totals[playerId] = (totals[playerId] || 0) + scoreForResult(league || {}, value)
-    }
+    const sessionRows = state.players.map((player) => ({ player, score: scoreForResult(league || {}, session.scores?.[player.id]) }))
+      .sort((a, b) => b.score - a.score || a.player.name.localeCompare(b.player.name, 'es'))
+    sessionRows.forEach(({ player }, index) => { totals[player.id] = (totals[player.id] || 0) + (RANKING_POINTS[index] || 50) })
   }
   for (const slam of state.slams) {
     if (!slam.published) continue
@@ -142,7 +142,15 @@ export function rankingPreview(state, league, session) {
   const priorSeason = state.history.find((season) => Number(season.number) === Number(state.season) - 1)
   const historicalLeague = priorSeason?.leagues?.find((item) => item.name.trim().toLowerCase() === league.name.trim().toLowerCase())
   const defendedByPlayer = Object.fromEntries((historicalLeague?.positions || []).map((item) => [item.playerId, item.points ?? RANKING_POINTS[(item.position || 6) - 1] ?? 0]))
-  const previousChampionIds = historicalLeague?.winnerIds || []
+  const previousChampionIds = historicalLeague?.winnerIds?.length
+    ? historicalLeague.winnerIds
+    : historicalLeague?.championType === 'individual'
+      ? [historicalLeague.positions?.find((item) => item.position === 1)?.playerId].filter(Boolean)
+      : historicalLeague?.winnerTeamId
+        ? state.players.filter((player) => player.teamId === historicalLeague.winnerTeamId).map((player) => player.id)
+        : historicalLeague?.positions?.[0]
+          ? state.players.filter((player) => player.teamId === state.players.find((item) => item.id === historicalLeague.positions[0].playerId)?.teamId).map((player) => player.id)
+          : []
   const oldContribution = league.rankingApplied || {}
   const championTeam = after[0] ? state.teams.find((team) => team.id === after[0].teamId) : null
   const championIds = league.championType === 'individual'
